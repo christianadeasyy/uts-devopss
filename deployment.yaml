@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uts-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uts-app
+  template:
+    metadata:
+      labels:
+        app: uts-app
+    spec:
+      containers:
+        - name: uts-app-container
+          image: uts-devops-naa
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000

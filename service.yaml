@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uts-app-service
+spec:
+  selector:
+    app: uts-app
+  ports:
+    - protocol: TCP
+      port: 5001 # Port di luar (yang diakses user/client)
+      targetPort: 5000 # Port di dalam container (tempat app.js berjalan)
+  type: NodePort
