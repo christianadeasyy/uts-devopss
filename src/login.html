@@ -4,36 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Keren</title>
+    <title>Login Futuristik</title>
     <style>
         * {
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
             height: 100vh;
+            background: url('https://images.unsplash.com/photo-1503264116251-35a269479413') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(10px);
         }
 
-        .login-container {
-            background: white;
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 400px;
-            animation: fadeIn 1s ease-in-out;
+            max-width: 350px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            animation: slideIn 1s ease;
         }
 
-        @keyframes fadeIn {
+        @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
 
             to {
@@ -42,92 +46,83 @@
             }
         }
 
-        .login-container h2 {
-            margin-bottom: 20px;
-            color: #333;
+        .glass-container h2 {
             text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
 
         .input-group {
             margin-bottom: 20px;
         }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
         .input-group input {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            transition: border-color 0.3s;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            outline: none;
+            font-size: 16px;
         }
 
-        .input-group input:focus {
-            border-color: #667eea;
-            outline: none;
+        .input-group input::placeholder {
+            color: #ccc;
         }
 
         .login-btn {
             width: 100%;
             padding: 12px;
-            background-color: #667eea;
-            color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
+            background-color: rgba(102, 126, 234, 0.8);
+            color: white;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background 0.3s;
         }
 
         .login-btn:hover {
-            background-color: #556cd6;
+            background-color: rgba(102, 126, 234, 1);
         }
 
         .message {
-            text-align: center;
             margin-top: 15px;
-            color: red;
+            text-align: center;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-
-    <div class="login-container">
-        <h2>Login</h2>
+    <div class="glass-container">
+        <h2>Login System</h2>
         <div class="input-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Masukkan username">
+            <input type="text" id="username" placeholder="Username">
         </div>
         <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Masukkan password">
+            <input type="password" id="password" placeholder="Password">
         </div>
-        <button class="login-btn" onclick="handleLogin()">Login</button>
+        <button class="login-btn" onclick="handleLogin()">Masuk</button>
         <div class="message" id="message"></div>
     </div>
 
     <script>
         function handleLogin() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            const message = document.getElementById("message");
+            const user = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
+            const msg = document.getElementById("message");
 
-            // Contoh validasi statis
-            if (username === "admin" && password === "1234") {
-                message.style.color = "green";
-                message.textContent = "Login berhasil!";
+            if (user === "neo" && pass === "matrix") {
+                msg.style.color = "#0f0";
+                msg.textContent = "🟢 Login sukses. Selamat datang, Agent!";
             } else {
-                message.style.color = "red";
-                message.textContent = "Username atau password salah.";
+                msg.style.color = "#f00";
+                msg.textContent = "🔴 Akses ditolak. Username atau password salah.";
             }
         }
     </script>
-
 </body>
 
 </html>
